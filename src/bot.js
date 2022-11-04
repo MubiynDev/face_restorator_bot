@@ -1,10 +1,42 @@
 const { default: fetch } = require('node-fetch');
+const express = require("express")
+const app = express()
 const TelegramBot = require("node-telegram-bot-api");
-const { TOKEN } = require("./config");
+const { TOKEN, PORT, SERVER_URL } = require("../config");
+const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`
+const URI = `/webhook/${TOKEN}`
+const webhookURL = `${SERVER_URL}${URI}`
 
-const bot = new TelegramBot(TOKEN, {
-    polling: true,
-});
+const setWebhook = async () => {
+    try {
+        await fetch(`${TELEGRAM_API}/setWebhook?url=${webhookURL}&drop_pending_updates=true`)
+    } catch (error) {
+        return error
+    }
+}
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+app.post(URI, async (req, res) => {
+    bot.processUpdate(req.body)
+    res.status(200).send("ok")
+})
+app.listen(PORT, async () => {
+    try {
+        console.log(`server running at ${PORT}`)
+        await setWebhook()
+    } catch(e) {
+        console.log(e.message)
+    }
+})
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+const bot = new TelegramBot(TOKEN);
+
+
 
 
 bot.on("message", async message => {
