@@ -2,7 +2,7 @@
   "name": "facerestoratorbot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "start": "node ./src/bot.js",
     "dev": "nodemon ./src/bot.js"
@@ -15,6 +15,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fetch": "^1.1.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0",
     "node-fetch": "^2.6.7",
     "node-telegram-bot-api": "^0.59.0",
     "telegram-bot-api": "^2.0.1"
