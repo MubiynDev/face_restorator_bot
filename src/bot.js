@@ -52,7 +52,7 @@ bot.on("message", async message => {
      try {
         await bot.sendMessage(chatId, "Process jarayoni 20-30 soniya vaqt olishi mumkin. iltimos biroz kuting...")
 
-        const fileId = message.photo[3] ? message.photo[3].file_id : message.photo[2].file_id || message.photo[1].file_id
+        const fileId = message.photo[message.photo.length - 1].file_id
         const link = await bot.getFileLink(fileId)
         
         const data = {
@@ -86,7 +86,7 @@ bot.on("message", async message => {
             await bot.sendMessage(chatId, `Rasmingiz tayyor:`)
             await bot.sendPhoto(chatId, image.output)
 
-            await bot.sendMessage(CHANNEL_FOR_LOG, `${image.output} ${userName}`)
+            await bot.sendMessage(CHANNEL_FOR_LOG, `${image.output} @${userName}`)
            } else {
             await bot.sendMessage(chatId, `Xatolik yuz berdi. iltimos qaytadan urinib ko'ring`)
            }
