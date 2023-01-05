@@ -7,5 +7,6 @@ module.exports = {
     PORT: env.PORT,
     SERVER_URL: env.SERVER_URL,
     CHANNEL_FOR_LOG: env.CHANNEL_FOR_LOG,
-    FETCH_URL: env.FETCH_URL
+    FETCH_URL: env.FETCH_URL,
+    MONGO_URL: env.MONGO_URL
 }
