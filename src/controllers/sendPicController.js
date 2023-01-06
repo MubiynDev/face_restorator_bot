@@ -61,6 +61,7 @@ module.exports = async (bot, message) => {
         } 
         else if(message.text === "/start") {
             await bot.sendMessage(message.from.id, "Let's send me a picture 📷")
+           
         }
         else if(message.text && message.text !== "/ad" && message.text !== "/getUsers") {
             await bot.sendMessage(message.from.id, `Wrong format. please send me a picture only ❗️`)

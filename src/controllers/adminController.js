@@ -35,6 +35,7 @@ module.exports.sendAd = async (bot, message) => {
                             if(err.response.body.error_code == 403) {
                                 await userModel.findByIdAndUpdate(users[user]._id, {
                                     isActive: false,
+                                    step: "start"
                                 })
                             }
                         
